@@ -9,6 +9,33 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "DevBlog - 개발자의 성장 이야기",
   description: "웹 개발, 프로그래밍, 그리고 기술에 대한 깊이 있는 인사이트를 공유합니다.",
+  keywords: ["개발", "프로그래밍", "웹개발", "블로그", "기술"],
+  authors: [{ name: "김개발" }],
+  creator: "김개발",
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: "https://your-blog-url.vercel.app",
+    title: "DevBlog - 개발자의 성장 이야기",
+    description: "웹 개발, 프로그래밍, 그리고 기술에 대한 깊이 있는 인사이트를 공유합니다.",
+    siteName: "DevBlog",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DevBlog - 개발자의 성장 이야기",
+    description: "웹 개발, 프로그래밍, 그리고 기술에 대한 깊이 있는 인사이트를 공유합니다.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 }
 
 export default function RootLayout({
