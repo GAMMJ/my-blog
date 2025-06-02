@@ -1,66 +1,87 @@
-/* 공통 컴포넌트 스타일 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* 헤더 스타일 */
-.header-nav-item {
-  @apply text-sm font-medium transition-all duration-200 relative py-2;
-}
+@layer components {
+  /* 공통 컴포넌트 스타일 */
 
-.header-nav-item.active {
-  @apply text-primary;
-}
+  /* 카드 스타일 */
+  .card-base {
+    @apply bg-card text-card-foreground rounded-lg border shadow-sm;
+  }
 
-.header-nav-item.active::after {
-  @apply absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full;
-  content: "";
-}
+  .card-hover {
+    @apply transition-shadow hover:shadow-md;
+  }
 
-.header-nav-item:not(.active) {
-  @apply text-muted-foreground hover:text-foreground;
-}
+  /* 컨테이너 스타일 */
+  .container {
+    @apply w-full mx-auto px-8;
+    max-width: 1400px;
+  }
 
-/* 버튼 공통 스타일 */
-.btn-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors;
-}
+  /* 텍스트 스타일 */
+  .prose {
+    @apply text-foreground max-w-none;
+  }
 
-.btn-secondary {
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors;
-}
+  .prose-lg {
+    @apply text-lg;
+  }
 
-.btn-ghost {
-  @apply hover:bg-accent hover:text-accent-foreground transition-colors;
-}
+  /* 입력 필드 공통 스타일 */
+  .input-base {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm;
+    @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
+    @apply placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2;
+    @apply focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
 
-/* 카드 공통 스타일 */
-.card-base {
-  @apply bg-card text-card-foreground border rounded-lg shadow-sm;
-}
+  /* 배지 공통 스타일 */
+  .badge-base {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors;
+  }
 
-.card-hover {
-  @apply hover:shadow-md transition-shadow duration-200;
-}
+  .badge-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/80;
+  }
 
-/* 입력 필드 공통 스타일 */
-.input-base {
-  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm;
-  @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
-  @apply placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2;
-  @apply focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-}
+  .badge-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
 
-/* 배지 공통 스타일 */
-.badge-base {
-  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors;
-}
+  .badge-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
 
-.badge-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/80;
-}
+  /* 헤더 스타일 */
+  .header-nav-item {
+    @apply text-sm font-medium transition-all duration-200 relative py-2;
+  }
 
-.badge-secondary {
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
-}
+  .header-nav-item.active {
+    @apply text-primary;
+  }
 
-.badge-outline {
-  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  .header-nav-item.active::after {
+    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full;
+    content: "";
+  }
+
+  .header-nav-item:not(.active) {
+    @apply text-muted-foreground hover:text-foreground;
+  }
+
+  /* 버튼 공통 스타일 */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground transition-colors;
+  }
 }

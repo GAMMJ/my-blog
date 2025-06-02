@@ -1,131 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* 레이아웃 공통 스타일 */
+@layer components {
+  /* 컨테이너 스타일 */
+  .page-container {
+    @apply min-h-screen bg-background;
+  }
 
-/* 컨테이너 스타일 */
-.page-container {
-  @apply min-h-screen bg-background;
+  .content-container {
+    @apply container mx-auto px-4 py-8;
+  }
+
+  .content-container-narrow {
+    @apply container mx-auto px-4 py-8 max-w-4xl;
+  }
+
+  /* 섹션 스타일 */
+  .hero-section {
+    @apply text-center py-16 md:py-24;
+  }
+
+  .hero-title {
+    @apply text-4xl md:text-6xl font-bold tracking-tight mb-6;
+  }
+
+  .hero-subtitle {
+    @apply text-xl text-muted-foreground mb-8 max-w-2xl mx-auto;
+  }
+
+  .hero-actions {
+    @apply flex gap-4 justify-center flex-wrap;
+  }
+
+  .section-header {
+    @apply flex items-center justify-between mb-8;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold tracking-tight mb-8;
+  }
+
+  /* 그리드 레이아웃 */
+  .posts-grid {
+    @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .related-posts-grid {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+
+  /* 네비게이션 스타일 */
+  .back-navigation {
+    @apply mb-6;
+  }
+
+  .breadcrumb {
+    @apply flex items-center space-x-2 text-sm text-muted-foreground mb-4;
+  }
+
+  /* 메타 정보 스타일 */
+  .meta-info {
+    @apply flex items-center gap-2 text-sm text-muted-foreground;
+  }
+
+  .meta-separator {
+    @apply ml-2;
+  }
+
+  /* 태그 컨테이너 */
+  .tags-container {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .filter-tags-container {
+    @apply flex flex-wrap gap-2 mb-6;
+  }
+
+  /* 작성자 정보 */
+  .author-info {
+    @apply flex items-center gap-3;
+  }
+
+  .author-avatar {
+    @apply w-10 h-10 rounded-full bg-primary flex items-center justify-center;
+  }
+
+  .author-avatar-text {
+    @apply text-primary-foreground font-semibold;
+  }
+
+  .author-details {
+    @apply space-y-0;
+  }
+
+  .author-name {
+    @apply font-medium;
+  }
+
+  .author-role {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* 반응형 유틸리티 */
+  .mobile-only {
+    @apply block md:hidden;
+  }
+
+  .desktop-only {
+    @apply hidden md:block;
+  }
+
+  .tablet-up {
+    @apply hidden md:flex;
+  }
+
+  /* 애니메이션 */
+  .fade-in {
+    @apply opacity-0;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .slide-in-from-bottom {
+    @apply opacity-0 translate-y-4;
+    animation: slideInFromBottom 0.5s ease-out forwards;
+  }
+
+  .hover-lift {
+    @apply transition-transform hover:-translate-y-1;
+  }
+
+  /* 포커스 스타일 */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* 레이아웃 관련 스타일 */
+  .layout-container {
+    @apply min-h-screen flex flex-col;
+  }
+
+  .main-content {
+    @apply flex-grow container py-8 md:py-24;
+  }
+
+  .section {
+    @apply py-16;
+  }
 }
 
-.content-container {
-  @apply container mx-auto px-4 py-8;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.content-container-narrow {
-  @apply container mx-auto px-4 py-8 max-w-4xl;
-}
-
-/* 섹션 스타일 */
-.hero-section {
-  @apply text-center py-16 md:py-24;
-}
-
-.hero-title {
-  @apply text-4xl md:text-6xl font-bold tracking-tight mb-6;
-}
-
-.hero-subtitle {
-  @apply text-xl text-muted-foreground mb-8 max-w-2xl mx-auto;
-}
-
-.hero-actions {
-  @apply flex gap-4 justify-center flex-wrap;
-}
-
-.section-header {
-  @apply flex items-center justify-between mb-8;
-}
-
-.section-title {
-  @apply text-3xl font-bold;
-}
-
-/* 그리드 레이아웃 */
-.posts-grid {
-  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
-}
-
-.related-posts-grid {
-  @apply grid gap-4 md:grid-cols-2;
-}
-
-/* 네비게이션 스타일 */
-.back-navigation {
-  @apply mb-6;
-}
-
-.breadcrumb {
-  @apply flex items-center space-x-2 text-sm text-muted-foreground mb-4;
-}
-
-/* 메타 정보 스타일 */
-.meta-info {
-  @apply flex items-center gap-2 text-sm text-muted-foreground;
-}
-
-.meta-separator {
-  @apply ml-2;
-}
-
-/* 태그 컨테이너 */
-.tags-container {
-  @apply flex flex-wrap gap-2;
-}
-
-.filter-tags-container {
-  @apply flex flex-wrap gap-2 mb-6;
-}
-
-/* 작성자 정보 */
-.author-info {
-  @apply flex items-center gap-3;
-}
-
-.author-avatar {
-  @apply w-10 h-10 rounded-full bg-primary flex items-center justify-center;
-}
-
-.author-avatar-text {
-  @apply text-primary-foreground font-semibold;
-}
-
-.author-details {
-  @apply space-y-0;
-}
-
-.author-name {
-  @apply font-medium;
-}
-
-.author-role {
-  @apply text-sm text-muted-foreground;
-}
-
-/* 반응형 유틸리티 */
-.mobile-only {
-  @apply block md:hidden;
-}
-
-.desktop-only {
-  @apply hidden md:block;
-}
-
-.tablet-up {
-  @apply hidden md:flex;
-}
-
-/* 애니메이션 */
-.fade-in {
-  @apply animate-in fade-in duration-500;
-}
-
-.slide-in-from-bottom {
-  @apply animate-in slide-in-from-bottom-4 duration-500;
-}
-
-.hover-lift {
-  @apply transition-transform hover:-translate-y-1;
-}
-
-/* 포커스 스타일 */
-.focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
