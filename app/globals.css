@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 /* 컴포넌트 스타일 import */
-@import "../styles/components.css";
-@import "../styles/blog.css";
-@import "../styles/layout.css";
+@import "@/styles/components.css";
+@import "@/styles/blog.css";
+@import "@/styles/layout.css";
 
 body {
   font-family: Arial, Helvetica, sans-serif;
