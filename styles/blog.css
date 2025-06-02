@@ -1,0 +1,130 @@
+/* 블로그 전용 스타일 */
+
+/* 블로그 포스트 카드 */
+.blog-post-card {
+  @apply card-base card-hover h-full flex flex-col;
+}
+
+.blog-post-header {
+  @apply flex-grow;
+}
+
+.blog-post-meta {
+  @apply flex items-center gap-2 text-sm text-muted-foreground mb-2;
+}
+
+.blog-post-title {
+  @apply line-clamp-2 font-semibold text-lg mb-2 hover:text-primary transition-colors;
+}
+
+.blog-post-description {
+  @apply line-clamp-3 text-muted-foreground text-sm flex-grow;
+}
+
+.blog-post-tags {
+  @apply flex flex-wrap gap-1 mb-4;
+}
+
+.blog-post-read-more {
+  @apply text-primary hover:text-primary/80 transition-colors text-sm font-medium;
+}
+
+/* 블로그 콘텐츠 스타일 */
+.blog-content {
+  @apply prose prose-lg dark:prose-invert max-w-none;
+}
+
+.blog-content h1 {
+  @apply text-3xl font-bold mt-8 mb-6 text-foreground;
+}
+
+.blog-content h2 {
+  @apply text-2xl font-bold mt-8 mb-4 text-foreground;
+}
+
+.blog-content h3 {
+  @apply text-xl font-semibold mt-6 mb-3 text-foreground;
+}
+
+.blog-content p {
+  @apply text-foreground/90 leading-relaxed mb-4;
+}
+
+.blog-content img {
+  @apply rounded-lg shadow-md my-6 max-w-full h-auto;
+}
+
+.blog-content blockquote {
+  @apply border-l-4 border-primary bg-muted/50 p-4 rounded-r-lg my-6 italic;
+}
+
+.blog-content table {
+  @apply w-full border-collapse border border-border rounded-lg overflow-hidden my-6;
+}
+
+.blog-content th {
+  @apply bg-muted font-semibold text-left px-4 py-2 border border-border;
+}
+
+.blog-content td {
+  @apply px-4 py-2 border border-border;
+}
+
+.blog-content ul,
+.blog-content ol {
+  @apply space-y-2 my-4 ml-6;
+}
+
+.blog-content li {
+  @apply text-foreground/90;
+}
+
+.blog-content code:not(pre code) {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.blog-content pre {
+  @apply overflow-x-auto my-6;
+}
+
+.blog-content video {
+  @apply w-full max-w-2xl mx-auto my-6 rounded-lg shadow-lg;
+}
+
+.blog-content a {
+  @apply text-primary hover:text-primary/80 transition-colors hover:underline;
+}
+
+/* 코드 블록 스타일 */
+.code-block-container {
+  @apply relative my-6;
+}
+
+.code-block-header {
+  @apply flex items-center justify-between bg-muted px-4 py-2 rounded-t-lg border-b;
+}
+
+.code-block-language {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+.code-block-copy-btn {
+  @apply h-8 w-8 p-0 hover:bg-muted-foreground/10 transition-colors;
+}
+
+/* 검색 바 스타일 */
+.search-container {
+  @apply relative max-w-md mx-auto;
+}
+
+.search-input {
+  @apply input-base pl-10 pr-10;
+}
+
+.search-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4;
+}
+
+.search-clear-btn {
+  @apply absolute right-1 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted-foreground/10;
+}
