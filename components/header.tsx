@@ -20,15 +20,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4">  
         <div className="flex h-16 items-center">
           {/* Logo - 왼쪽 */}
           <div className="w-1/4 min-w-[200px]">
             <Link href="/" className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">D</span>
+                <span className="text-primary-foreground font-bold text-sm">G</span>
               </div>
-              <span className="font-bold text-xl">DevBlog</span>
+              <span className="font-bold text-xl">GAMMJ</span>
             </Link>
           </div>
 

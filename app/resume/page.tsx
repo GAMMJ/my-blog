@@ -12,20 +12,20 @@ export default function ResumePage() {
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header Section */}
         <div className="text-center py-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">김개발</h1>
-          <p className="text-xl text-muted-foreground mb-6">풀스택 웹 개발자</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">김민재</h1>
+          <p className="text-xl text-muted-foreground mb-6">프론트엔드 개발자</p>
           <div className="flex flex-wrap justify-center gap-4 text-muted-foreground">
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              <span>developer@example.com</span>
+              <span>gammjmj@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              <span>010-1234-5678</span>
+              <span>010-2362-8965</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>서울, 대한민국</span>
+              <span>포항, 대한민국</span>
             </div>
           </div>
           <div className="flex justify-center gap-4 mt-6">
@@ -52,7 +52,7 @@ export default function ResumePage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                5년 이상의 웹 개발 경험을 가진 풀스택 개발자입니다. React, Next.js, Node.js를 주로 사용하며, 사용자
+                현재 대학교를 다니며 프론트를 공부하고 있는 중 입니다. React, Next.js, Node.js를 주로 사용하며, 사용자
                 경험과 성능 최적화에 관심이 많습니다. 새로운 기술을 배우고 팀과 지식을 공유하는 것을 즐깁니다.
               </p>
             </CardContent>
@@ -104,7 +104,7 @@ export default function ResumePage() {
           </Card>
 
           {/* Experience */}
-          <Card>
+          {/* <Card>
             <CardHeader>
               <CardTitle>경력</CardTitle>
             </CardHeader>
@@ -150,7 +150,7 @@ export default function ResumePage() {
                 </ul>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
 
           {/* Education */}
           <Card>
@@ -161,18 +161,18 @@ export default function ResumePage() {
               <div className="space-y-4">
                 <div>
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                    <h3 className="font-semibold">컴퓨터공학과 학사</h3>
-                    <span className="text-muted-foreground">2015.03 - 2019.02</span>
+                    <h3 className="font-semibold">전자공학과 &amp; 컴퓨터공학과 학사</h3>
+                    <span className="text-muted-foreground">2021.03 - 2027.02</span>
                   </div>
-                  <p className="text-primary font-medium">한국대학교</p>
-                  <p className="text-muted-foreground">GPA: 3.8/4.5</p>
+                  <p className="text-primary font-medium">국립경국대학교</p>
+                  <p className="text-muted-foreground">GPA: 4.3/4.5</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Projects */}
-          <Card>
+          {/* <Card>
             <CardHeader>
               <CardTitle>주요 프로젝트</CardTitle>
             </CardHeader>
@@ -211,7 +211,7 @@ export default function ResumePage() {
                 </ul>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </main>
     </div>
