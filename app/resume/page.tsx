@@ -2,7 +2,7 @@ import { Header } from "@/components/header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Github, Linkedin, Download } from "lucide-react"
+import { Mail, Phone, MapPin, Github, Instagram, Download } from "lucide-react"
 
 export default function ResumePage() {
   return (
@@ -29,13 +29,17 @@ export default function ResumePage() {
             </div>
           </div>
           <div className="flex justify-center gap-4 mt-6">
-            <Button variant="outline" size="sm">
-              <Github className="h-4 w-4 mr-2" />
-              GitHub
+            <Button variant="outline" size="sm" asChild>
+              <a href="https://github.com/GAMMJ" target="_blank" rel="noopener noreferrer">
+                <Github className="h-4 w-4 mr-2" />
+                GitHub
+              </a>
             </Button>
-            <Button variant="outline" size="sm">
-              <Linkedin className="h-4 w-4 mr-2" />
-              LinkedIn
+            <Button variant="outline" size="sm" asChild>
+              <a href="https://www.instagram.com/k__i__m_owsla" target="_blank" rel="noopener noreferrer">
+                <Instagram className="h-4 w-4 mr-2" />
+                Instagram
+              </a>
             </Button>
             <Button size="sm">
               <Download className="h-4 w-4 mr-2" />
