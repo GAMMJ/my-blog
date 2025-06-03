@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: "DevBlog - 개발자의 성장 이야기",
   description: "웹 개발, 프로그래밍, 그리고 기술에 대한 깊이 있는 인사이트를 공유합니다.",
   keywords: ["개발", "프로그래밍", "웹개발", "블로그", "기술"],
-  authors: [{ name: "김개발" }],
-  creator: "김개발",
+  authors: [{ name: "김민재" }],
+  creator: "김민재",
   openGraph: {
     type: "website",
     locale: "ko_KR",

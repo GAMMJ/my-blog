@@ -31,23 +31,21 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation - 중앙 */}
-          <nav className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary relative py-2",
-                    pathname === item.href
-                      ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+          <nav className="hidden md:flex items-center justify-center space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary relative py-2",
+                  pathname === item.href
+                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
           {/* Theme Toggle & Mobile Menu Button - 오른쪽 */}
