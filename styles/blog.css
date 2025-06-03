@@ -135,16 +135,23 @@
     @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
     @apply placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2;
     @apply focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-    @apply pl-10 pr-10;
-    padding-left: 2.5rem;
+    padding: 0.5rem;
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
   }
 
   .search-icon {
-    @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4;
+    @apply absolute text-muted-foreground h-4 w-4;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
     pointer-events: none;
   }
 
   .search-clear-btn {
-    @apply absolute right-1 top-1/2 transform -translate-y-1/2 h-6 w-6 p-0 hover:bg-muted-foreground/10;
+    @apply absolute h-6 w-6 p-0 hover:bg-muted-foreground/10;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
