@@ -27,6 +27,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+.env.development
+.env.test
+.env.production
 
 # vercel
 .vercel
@@ -41,3 +45,9 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Uploaded files
+public/uploads/
+
+# clerk configuration (can include secrets)
+/.clerk/

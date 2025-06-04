@@ -135,14 +135,13 @@
     @apply ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium;
     @apply placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2;
     @apply focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
-    padding: 0.5rem;
-    padding-left: 2.75rem;
-    padding-right: 2.75rem;
+    @apply pl-10 pr-10;
+    text-indent: 1.5rem;
   }
 
   .search-icon {
     @apply absolute text-muted-foreground h-4 w-4;
-    left: 0.75rem;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
