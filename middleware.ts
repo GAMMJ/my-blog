@@ -1,19 +1,32 @@
-import { authMiddleware } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
-const publicPaths = ["/", "/blog(.*)", "/api/posts"]
-
-const isPublic = (path: string) => {
-  return publicPaths.find((x) =>
-    path.match(new RegExp(`^${x}$`.replace("*$", "($|/)")))
+// Only public routes are listed here - all other routes will require authentication
+export function middleware(request: NextRequest) {
+  // 로그인이 필요한 경로들
+  const protectedPaths = ["/write"]
+  
+  // 현재 경로가 보호된 경로인지 확인
+  const isProtectedPath = protectedPaths.some(path => 
+    request.nextUrl.pathname.startsWith(path)
   )
+
+  if (isProtectedPath) {
+    // 세션스토리지의 인증 상태 확인
+    const isAuthenticated = request.cookies.get("isAuthenticated")?.value === "true"
+
+    if (!isAuthenticated) {
+      // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+      return NextResponse.redirect(new URL("/sign-in", request.url))
+    }
+  }
+
+  return NextResponse.next()
 }
 
-export default authMiddleware({
-  publicRoutes: ["/", "/blog(.*)", "/api/posts", "/sign-in", "/sign-up"]
-})
-
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: [
+    "/write/:path*",
+    "/post/:path*",
+  ],
 } 

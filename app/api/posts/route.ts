@@ -1,57 +1,64 @@
 import { NextResponse } from "next/server"
-import { db } from "@/lib/db"
-import { auth } from "@clerk/nextjs"
+import { prisma } from "@/lib/prisma"
+import { cookies } from "next/headers"
+import { Prisma } from "@prisma/client"
 
 export async function GET() {
   try {
-    const posts = await db.post.findMany({
-      where: {
-        published: true,
-      },
-      include: {
-        author: true,
-        category: true,
-      },
+    const posts = await prisma.post.findMany({
       orderBy: {
         createdAt: "desc",
       },
+      include: {
+        category: true,
+      },
     })
-
     return NextResponse.json(posts)
   } catch (error) {
-    console.error("[POSTS]", error)
-    return new NextResponse("Internal Error", { status: 500 })
+    console.error("[POSTS_GET]", error)
+    return NextResponse.json(
+      { error: "Error fetching posts" },
+      { status: 500 }
+    )
   }
 }
 
-export async function POST(req: Request) {
-  try {
-    const { userId } = auth()
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 })
-    }
+export async function POST(request: Request) {
+  const cookieStore = cookies()
+  const isAuthenticated = cookieStore.get("isAuthenticated")?.value === "true"
 
-    const body = await req.json()
-    const { title, content, categoryId, featuredImage } = body
+  if (!isAuthenticated) {
+    return NextResponse.json(
+      { error: "Unauthorized" },
+      { status: 401 }
+    )
+  }
+
+  try {
+    const json = await request.json()
+    const { title, content, categoryId } = json
 
     if (!title || !content || !categoryId) {
-      return new NextResponse("Missing required fields", { status: 400 })
+      return NextResponse.json(
+        { error: "Title, content and category are required" },
+        { status: 400 }
+      )
     }
 
-    const post = await db.post.create({
+    const post = await prisma.post.create({
       data: {
         title,
         content,
         categoryId,
-        featuredImage,
-        authorId: userId,
-        published: true,
       },
     })
 
     return NextResponse.json(post)
   } catch (error) {
-    console.error("[POSTS]", error)
-    return new NextResponse("Internal Error", { status: 500 })
+    console.error("[POST_CREATE]", error)
+    return NextResponse.json(
+      { error: "Error creating post" },
+      { status: 500 }
+    )
   }
 } 

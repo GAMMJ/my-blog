@@ -34,6 +34,7 @@ import type { DragEvent as ReactDragEvent } from "react"
 import { Editor } from '@tiptap/core'
 import { mergeAttributes } from '@tiptap/core'
 import TiptapImage from '@tiptap/extension-image'
+import { cn } from "@/lib/utils"
 
 declare module '@tiptap/extension-image' {
   interface ImageOptions {
@@ -90,7 +91,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
       Color,
       Image.configure({
         HTMLAttributes: {
-          class: 'resize-image',
+          class: "rounded-lg max-w-full",
         },
       }),
       Link.configure({
@@ -319,7 +320,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
   }
 
   return (
-    <div className="border rounded-lg overflow-hidden">
+    <div className="border rounded-lg overflow-hidden dark:border-gray-800">
       <style jsx global>{`
         .resize-image {
           display: inline-block;
@@ -359,12 +360,12 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        <div className="bg-muted/50 p-2 border-b flex flex-wrap gap-1">
+        <div className="bg-muted/50 p-2 border-b dark:border-gray-800 flex flex-wrap gap-1">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleBold().run()}
-            className={editor.isActive("bold") ? "bg-muted" : ""}
+            className={cn(editor.isActive("bold") && "bg-muted")}
           >
             <Bold className="h-4 w-4" />
           </Button>
@@ -372,7 +373,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleItalic().run()}
-            className={editor.isActive("italic") ? "bg-muted" : ""}
+            className={cn(editor.isActive("italic") && "bg-muted")}
           >
             <Italic className="h-4 w-4" />
           </Button>
@@ -380,7 +381,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleStrike().run()}
-            className={editor.isActive("strike") ? "bg-muted" : ""}
+            className={cn(editor.isActive("strike") && "bg-muted")}
           >
             <Strikethrough className="h-4 w-4" />
           </Button>
@@ -388,7 +389,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleCode().run()}
-            className={editor.isActive("code") ? "bg-muted" : ""}
+            className={cn(editor.isActive("code") && "bg-muted")}
           >
             <Code className="h-4 w-4" />
           </Button>
@@ -397,7 +398,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-            className={editor.isActive("heading", { level: 1 }) ? "bg-muted" : ""}
+            className={cn(editor.isActive("heading", { level: 1 }) && "bg-muted")}
           >
             <Heading1 className="h-4 w-4" />
           </Button>
@@ -405,7 +406,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-            className={editor.isActive("heading", { level: 2 }) ? "bg-muted" : ""}
+            className={cn(editor.isActive("heading", { level: 2 }) && "bg-muted")}
           >
             <Heading2 className="h-4 w-4" />
           </Button>
@@ -413,7 +414,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-            className={editor.isActive("heading", { level: 3 }) ? "bg-muted" : ""}
+            className={cn(editor.isActive("heading", { level: 3 }) && "bg-muted")}
           >
             <Heading3 className="h-4 w-4" />
           </Button>
@@ -422,7 +423,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleBulletList().run()}
-            className={editor.isActive("bulletList") ? "bg-muted" : ""}
+            className={cn(editor.isActive("bulletList") && "bg-muted")}
           >
             <List className="h-4 w-4" />
           </Button>
@@ -430,7 +431,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleOrderedList().run()}
-            className={editor.isActive("orderedList") ? "bg-muted" : ""}
+            className={cn(editor.isActive("orderedList") && "bg-muted")}
           >
             <ListOrdered className="h-4 w-4" />
           </Button>
@@ -438,7 +439,7 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().toggleBlockquote().run()}
-            className={editor.isActive("blockquote") ? "bg-muted" : ""}
+            className={cn(editor.isActive("blockquote") && "bg-muted")}
           >
             <Quote className="h-4 w-4" />
           </Button>
@@ -448,12 +449,12 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
               variant="ghost"
               size="sm"
               onClick={() => setShowLinkInput(!showLinkInput)}
-              className={editor.isActive("link") ? "bg-muted" : ""}
+              className={cn(editor.isActive("link") && "bg-muted")}
             >
               <LinkIcon className="h-4 w-4" />
             </Button>
             {showLinkInput && (
-              <div className="absolute top-full left-0 mt-1 bg-background border rounded-lg p-2 z-10 flex gap-2">
+              <div className="absolute top-full left-0 mt-1 bg-background border rounded-lg p-2 z-10 flex gap-2 dark:border-gray-800">
                 <Input
                   type="url"
                   placeholder="URL 입력"
@@ -511,7 +512,19 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
         </div>
 
         <div className="relative">
-          <EditorContent editor={editor} className="prose prose-sm max-w-none p-4" />
+          <EditorContent 
+            editor={editor} 
+            className={cn(
+              "prose prose-sm max-w-none p-4",
+              "dark:prose-invert",
+              "prose-headings:font-bold prose-headings:tracking-tight",
+              "prose-p:leading-7",
+              "prose-pre:rounded-lg",
+              "prose-code:rounded-md prose-code:bg-muted prose-code:px-1 prose-code:py-0.5",
+              "prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700",
+              "prose-img:rounded-lg"
+            )}
+          />
           {selectedImage && (
             <div
               ref={imageWrapperRef}

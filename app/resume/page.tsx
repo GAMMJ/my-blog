@@ -29,20 +29,20 @@ export default function ResumePage() {
             </div>
           </div>
           <div className="flex justify-center gap-4 mt-6">
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
               <a href="https://github.com/GAMMJ" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
+                <Github className="h-4 w-4" />
                 GitHub
               </a>
             </Button>
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
               <a href="https://www.instagram.com/k__i__m_owsla" target="_blank" rel="noopener noreferrer">
-                <Instagram className="h-4 w-4 mr-2" />
+                <Instagram className="h-4 w-4" />
                 Instagram
               </a>
             </Button>
-            <Button size="sm">
-              <Download className="h-4 w-4 mr-2" />
+            <Button size="sm" className="flex items-center gap-2">
+              <Download className="h-4 w-4" />
               PDF 다운로드
             </Button>
           </div>

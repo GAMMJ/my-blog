@@ -1,20 +1,28 @@
 import { NextResponse } from "next/server"
-import { auth } from "@clerk/nextjs"
 import { writeFile } from "fs/promises"
 import { join } from "path"
+import { cookies } from "next/headers"
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
+  const cookieStore = cookies()
+  const isAuthenticated = cookieStore.get("isAuthenticated")?.value === "true"
+
+  if (!isAuthenticated) {
+    return NextResponse.json(
+      { error: "Unauthorized" },
+      { status: 401 }
+    )
+  }
+
   try {
-    const { userId } = auth()
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 })
-    }
-
-    const data = await req.formData()
-    const file: File | null = data.get("file") as unknown as File
-
+    const formData = await request.formData()
+    const file = formData.get("file") as File
+    
     if (!file) {
-      return new NextResponse("No file uploaded", { status: 400 })
+      return NextResponse.json(
+        { error: "No file provided" },
+        { status: 400 }
+      )
     }
 
     const bytes = await file.arrayBuffer()
@@ -22,18 +30,20 @@ export async function POST(req: Request) {
 
     // 파일 이름에 타임스탬프 추가하여 중복 방지
     const timestamp = Date.now()
-    const fileName = `${timestamp}-${file.name}`
-    
-    // public/uploads 디렉토리에 저장
-    const path = join(process.cwd(), "public/uploads", fileName)
+    const filename = `${timestamp}-${file.name}`
+    const path = join(process.cwd(), "public/uploads", filename)
+
     await writeFile(path, buffer)
 
-    // 이미지 URL 반환
-    const imageUrl = `/uploads/${fileName}`
-    
-    return NextResponse.json({ url: imageUrl })
+    return NextResponse.json({ 
+      url: `/uploads/${filename}`,
+      message: "File uploaded successfully" 
+    })
   } catch (error) {
-    console.error("[UPLOAD]", error)
-    return new NextResponse("Internal Error", { status: 500 })
+    console.error("Upload error:", error)
+    return NextResponse.json(
+      { error: "Failed to upload file" },
+      { status: 500 }
+    )
   }
 } 

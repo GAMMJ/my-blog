@@ -14,7 +14,11 @@ const navigation = [
   { name: "RESUME", href: "/resume" },
 ]
 
-export function Header() {
+interface HeaderProps {
+  children?: React.ReactNode
+}
+
+export function Header({ children }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
